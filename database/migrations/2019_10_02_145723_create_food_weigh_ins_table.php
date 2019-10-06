@@ -15,8 +15,8 @@ class CreateFoodWeighInsTable extends Migration
     {
         Schema::create('food_weigh_ins', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('day_id')->unique();
-            $table->double('weight');
+            $table->unsignedBigInteger('day_id');
+            $table->float('weight', 5, 1);
             $table->string('meal_type', 9);
             $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
             $table->timestamps();

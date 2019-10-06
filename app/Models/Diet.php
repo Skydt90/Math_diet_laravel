@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Diet extends Model
 {
+    protected $dates = [];
+    protected $daily_loss = 0.0;
 
     protected $fillable = [
         'diet_name', 'start_weight', 'desired_weight', 

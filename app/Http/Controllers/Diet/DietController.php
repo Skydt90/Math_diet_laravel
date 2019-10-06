@@ -7,6 +7,7 @@ use App\Facades\DayFacade as DayService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDiet;
 use App\Models\Diet;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,11 +27,13 @@ class DietController extends Controller
 
 
     public function store(StoreDiet $request)
-    {
-        $diet = DietService::createDiet($request, Auth::user()->id);
-        
-        DayService::createDays($diet, DietService::createDietDates($diet), DietService::calculateDailyWeightLoss($diet));
-        
+    {   
+        try {
+            DayService::addDaysToDiet(DietService::createDiet($request, Auth::user()->id));
+        }
+        catch(Exception $e) {
+            return redirect()->back()->withErrors('ERROR: ' . $e->getMessage());
+        }
         return redirect()->route('diet.index', ['diets' => Diet::all()->where('user_id', Auth::user()->id)])->withStatus('Diet Successfully created!');
     } 
 

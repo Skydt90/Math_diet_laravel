@@ -13,7 +13,7 @@ class DietService implements DietServiceContract
 {
     public function createDiet(StoreDiet $request, int $user_id) : Diet
     {
-        return Diet::create([
+        $diet = Diet::create([
             'diet_name' => $request->name,
             'start_weight' => $request->start_weight,
             'desired_weight' => $request->desired_weight,
@@ -21,9 +21,12 @@ class DietService implements DietServiceContract
             'height' => $request->height,
             'user_id' => $user_id
         ]);
+        $diet->dates = $this->createDietDates($diet);
+        $diet->daily_loss = $this->calculateDailyWeightLoss($diet);
+        return $diet;
     }
 
-    public function createDietDates(Diet $diet) : array
+    private function createDietDates(Diet $diet) : array
     {
         $dates = [];
         $start_date = Carbon::now();
@@ -37,7 +40,7 @@ class DietService implements DietServiceContract
         return $dates;
     }
 
-    public function calculateDailyWeightLoss(Diet $diet) : float
+    private function calculateDailyWeightLoss(Diet $diet) : float
     {
         return ($diet->start_weight - $diet->desired_weight) / $diet->number_of_days;
     }

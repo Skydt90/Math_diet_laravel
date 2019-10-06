@@ -25,7 +25,7 @@ class StoreDiet extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:50',
+            'name' => 'required|max:40',
             'start_weight' => 'required|numeric|min:45|max:300',
             'desired_weight' => 'required|numeric|min:45|max:300',
             'height' => 'required|numeric|max:250'

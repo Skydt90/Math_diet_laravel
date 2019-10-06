@@ -16,7 +16,7 @@ class CreateBodyWeighInsTable extends Migration
         Schema::create('body_weigh_ins', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('day_id')->unique();
-            $table->double('weight');
+            $table->float('weight', 5, 1);
             $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
             $table->timestamps();
         });

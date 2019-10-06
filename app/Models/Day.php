@@ -9,7 +9,7 @@ class Day extends Model
 
     protected $fillable = [
         'date', 'diet_id', 'goal_weight', 'morning_weight',
-        'allowed_food_intake', 'like'
+        'allowed_food_intake'
     ];
 
     //relationships

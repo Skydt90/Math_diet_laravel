@@ -16,9 +16,9 @@ class CreateDietsTable extends Migration
         Schema::create('diets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('diet_name', 40);
-            $table->double('start_weight');
-            $table->double('desired_weight');
-            $table->integer('number_of_days');
+            $table->float('start_weight', 5, 2);
+            $table->float('desired_weight', 5, 2);
+            $table->smallInteger('number_of_days');
             $table->string('height');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -17,10 +17,10 @@ class CreateDaysTable extends Migration
             $table->bigIncrements('id');
             $table->date('date');
             $table->unsignedBigInteger('diet_id');
-            $table->double('goal_weight');
-            $table->double('morning_weight');
-            $table->double('allowed_food_intake');
-            $table->boolean('like');
+            $table->float('goal_weight', 5, 2);
+            $table->float('morning_weight', 5, 2);
+            $table->float('allowed_food_intake', 5, 1);
+            $table->boolean('like')->default(false);
             $table->foreign('diet_id')->references('id')->on('diets')->onDelete('cascade');
             $table->timestamps();
         });

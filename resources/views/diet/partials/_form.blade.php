@@ -5,13 +5,13 @@
     </div>
     <div class="form-group col-md-6">
         <label for="start_weight">Current Weight</label>
-        <input class="form-control" type="number" value="{{ old('start_weight', $diet->start_weight ?? null) }}" placeholder="" name="start_weight">
+        <input class="form-control" type="number" step="0.1" value="{{ old('start_weight', $diet->start_weight ?? null) }}" placeholder="" name="start_weight">
     </div>
 </div>
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="desired_weight">Desired Weight</label>
-        <input class="form-control" type="number" value="{{ old('desired_weight', $diet->desired_weight ?? null) }}" placeholder="" name="desired_weight">
+        <input class="form-control" type="number" step="0.1" value="{{ old('desired_weight', $diet->desired_weight ?? null) }}" placeholder="" name="desired_weight">
     </div>
     <div class="form-group col-md-6">
         <label for="number_of_days">Number of Days</label>
