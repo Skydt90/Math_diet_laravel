@@ -29,7 +29,8 @@ class DietController extends Controller
     public function store(StoreDiet $request)
     {   
         try {
-            DayService::addDaysToDiet(DietService::createDiet($request, Auth::user()->id));
+            $diet = DietService::createDiet($request, Auth::user()->id);
+            DayService::addDaysToDiet($diet);
         }
         catch(Exception $e) {
             return redirect()->back()->withErrors('ERROR: ' . $e->getMessage());
@@ -40,7 +41,7 @@ class DietController extends Controller
     
     public function show(Diet $diet)
     {
-        //
+        return view('diet.show', ['diet' => Diet::with('days')->findOrFail($diet->id)]);
     }
 
     

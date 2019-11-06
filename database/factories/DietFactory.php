@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Diet::class, function (Faker $faker) {
     return [
-        'diet_name' => $faker->title(),
+        'diet_name' => $faker->name(),
         'start_weight' => $faker->numberBetween(65, 160),
         'desired_weight' => $faker->numberBetween(55, 85),
         'number_of_days' => $faker->numberBetween(80, 300),

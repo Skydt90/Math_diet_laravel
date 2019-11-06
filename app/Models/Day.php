@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Day extends Model
 {
+    public $timestamps = true;
 
     protected $fillable = [
         'date', 'diet_id', 'goal_weight', 'morning_weight',
-        'allowed_food_intake'
+        'allowed_food_intake', 'created_at', 'updated_at'
     ];
 
     //relationships

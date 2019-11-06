@@ -19,6 +19,7 @@ class DayService implements DayServiceContract
                 'goal_weight' => $diet->start_weight - $diet->daily_loss * $i,
                 'morning_weight' => 0.0,
                 'allowed_food_intake' => 0.0,
+                'created_at' => now()
             ];
             array_push($days, $date);
         }

@@ -16,3 +16,4 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('/');
 Route::resource('diet', 'Diet\DietController')->middleware('auth');
 Route::resource('user', 'User\UserController')->only('index', 'show', 'edit')->middleware('auth');
+Route::resource('day', 'Day\DayController')->only('show', 'edit', 'delete')->middleware('auth');

@@ -21,10 +21,10 @@ class AppServiceProvider extends ServiceProvider
          */
         
         //DietService
-        $this->app->singleton(DietService::class, function() {
+        $this->app->singleton(DietService::class, function() { //dependency inject
             return new DietService();
         });
-        $this->app->bind('App\Contracts\DietServiceContract', DietService::class);
+        $this->app->bind('App\Contracts\DietServiceContract', DietService::class); //facade
 
         //DayService
         $this->app->singleton(DayService::class, function() {
